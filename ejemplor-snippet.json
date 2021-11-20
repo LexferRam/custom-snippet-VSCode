@@ -1,0 +1,61 @@
+{
+	"Print to console": {
+		"scope": "javascript,typescript",
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	"test de lexfer": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "ctx",
+		"body": [
+			"import {createContext} from 'react'",
+			"$2",
+			"const ${1:Component}= createContext()",
+			"$2",
+			"$2",
+			"const ${TM_FILENAME_BASE}= ({children}) => {",
+			"    return(",
+			"       <${TM_FILENAME_BASE}.Provider>",
+			"          {children}",
+			"       </${TM_FILENAME_BASE}.Provider>",
+			"    )",
+			"}",
+		],
+		"description": "Log output to console"
+	},
+	"test de lexfer2": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "lx2",
+		"body": [
+			"<h1>$1</h1>",
+			"$2",
+			"<p>prueba de lexfer </p>",
+		],
+		"description": "Log output to console"
+	},
+	"Comment": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "c",
+		"body": "$LINE_COMMENT $0 $LINE_COMMENT",
+		"description": "set a comment"
+	},
+	"Default Component": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "dc",
+		"body": [
+			"const ${TM_FILENAME_BASE} = ($1) => {",
+			"\treturn (",
+			"\t\t${0:// body...}",
+			"\t);",
+			"};",
+			"",
+			"export default ${TM_FILENAME_BASE};",
+			""
+		],
+		"description": "Arrow function default Component, takes the file name"
+	}
+}
