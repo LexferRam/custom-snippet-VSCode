@@ -1,0 +1,124 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Example Redux Toolkit Store": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "redux-store",
+		"body": [
+			"import { configureStore } from '@reduxjs/toolkit'",
+			"import logger from 'redux-logger'",
+			"//slices",
+			"import { loadingSlice, todoSlice } from '../features';",
+			"$1",
+			"export const store = configureStore({",
+			"    reducer:{",
+			"       loading: loadingSlice,",
+			"       todosList: todoSlice,",
+			"    },",
+			"    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),",
+			"    devTools: process.env.NODE_ENV !== 'production',",
+			"})",
+			"$1",
+			"export type RootState = ReturnType<typeof store.getState>",
+			"export type AppDispatch = typeof store.dispatch;",
+		],
+		"description": "Example Redux Toolkit Store"
+	},
+	"Example1 Redux Toolkit Slice": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "redux-slice1",
+		"body": [
+			"import { PayloadAction, createSlice } from '@reduxjs/toolkit';",
+			"$2",
+			"const initialState = {",
+				"loading: true",
+			"};",
+			"$2",
+			"export const loadingSlice = createSlice({",
+			"   name: 'loading',",
+			"   initialState,",
+			"   reducers:{",
+			"           setLoading: (state, action: PayloadAction<boolean>) => {",
+			"           state.loading = action.payload;",
+			"    }",
+			"   }",
+			"})",
+			"$2",
+			"export const { setLoading } = loadingSlice.actions;",
+			"export default loadingSlice.reducer;",
+		],
+		"description": "Example1 Redux Toolkit Slice"
+	},
+	"Example2 Redux Toolkit Slice": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "redux-slice2",
+		"body": [
+			"import {createSlice, PayloadAction} from '@reduxjs/toolkit';",
+			"$2",
+			"interface Todo{",
+				"id?: number,",
+				"title?:string,",
+				"useId?:number,",
+				"completed?: boolean",
+			"}",
+			"$2",
+			"interface CustomerState{",
+				"todos: Todo[]",
+			"}",
+			"$2",
+			"const initialState: CustomerState = {",
+				"todos: []",
+			"};",
+			"$2",
+			"export const todoSlice = createSlice({",
+			"   name: 'todos',",
+			"   initialState,",
+			"   reducers: {",
+			"       setTodos: (state,action:PayloadAction<Todo[]>) => {",
+			"           state.todos=action.payload;",
+			"       }",
+			"   }",
+			"})",
+			"$2",
+			"export const { setTodos } = todoSlice.actions;",
+			"export default todoSlice.reducer;",
+		],
+		"description": "Example2 Redux Toolkit Slice"
+	},
+	"React-Redux: useSelector - useDispatch": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "redux-selector-dispatch example usage",
+		"body": [
+			"import { useSelector, useDispatch } from 'react-redux';",
+			"import { setTodos } from '../features/todoSlice';",
+			"$2",
+			"// ...",
+			"$2",
+			"const dispatch = useDispatch()",
+			"const todos = useSelector((state: RootState) => state.todosList.todos)",
+			"$2",
+			"useEffect(() => {",
+			"   (async function():Promise<void>{",
+			"      const res = await fetch('https://jsonplaceholder.typicode.com/todos')",
+			"      const data = await res.json()",
+			"      dispatch(setTodos(data))",
+			"   })()",
+			"},[dispatch])",
+		],
+		"description": "redux-selector-dispatch example usage"
+	},
+}
