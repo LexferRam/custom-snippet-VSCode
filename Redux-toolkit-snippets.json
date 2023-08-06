@@ -281,13 +281,13 @@
 	},
 	"ContextAPI-reducer-example-reactjs": {
 		"scope": "javascript,typescript,javascriptreact, typescriptreact",
-		"prefix": "ContextAPI-combinedReducers",
+		"prefix": "ContextAPI-reducer",
 		"body": [
 			"import { Dispatch } from 'react';",
 			"$2",
 			"export enum ACTIONS_TYPES {",
-			"   INCREMENT,",
-			"   DECREMENT",
+			"   INCREMENT='INCREMENT',",
+			"   DECREMENT='DECREMENT'",
 			"}",
 			"$2",
 			"export type ACTIONTYPE =",
@@ -317,11 +317,11 @@
 			"   }",
 			"}",
 		],
-		"description": "Combined reducers Context API with useReducer example"
+		"description": "reducers Context API with useReducer example"
 	},
 	"ContextAPI-actions-example-reactjs": {
 		"scope": "javascript,typescript,javascriptreact, typescriptreact",
-		"prefix": "ContextAPI-combinedReducers",
+		"prefix": "ContextAPI-actions-example",
 		"body":[
 		"import { CombinedActionType } from './context/combinedReducers'",
 		"import { ACTIONS_TYPES } from './reducers/appReducer'",
@@ -334,6 +334,6 @@
 		"   decreaseCountAction",
 		"}",
 		],
-		"description": "Combined reducers Context API with useReducer example"
+		"description": "Actions Context API with useReducer example"
 	},
 }
