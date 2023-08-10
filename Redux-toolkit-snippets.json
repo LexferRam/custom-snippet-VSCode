@@ -558,4 +558,40 @@
 		],
 		"description": "react-router-private-route-HOC"
 	},
+	"Import env vite": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "env-vite",
+		"body": [
+			"import.meta.env.VITE_TEST",
+			"$2"
+		],
+		"description": "Import env vite"
+	},
+	"Custom javascript event": {
+		"scope": "javascript,typescript,javascriptreact, typescriptreact",
+		"prefix": "custom-event-js",
+		"body": [
+		"$2",
+		"//listening the custom event",
+		"useEffect(() => {" ,
+		"   const handleCallEvent = ((event: CustomEvent<boolean>) => {", 
+		"       console.log(event.detail)", 
+		"   }) as any", 
+		"       window.addEventListener('testEvent', handleCallEvent)", 
+		"       return () => window.removeEventListener('testEvent', handleCallEvent)", 
+		"}, [])",
+		"$2",
+		"//execute custom event",
+		"<button",
+		"   onClick={() => {",
+		"       const event = new CustomEvent('testEvent', { detail: 'test' } );",
+		"       window.dispatchEvent(event);",
+		"   }}",
+		">",
+		"   Custom Event",
+		"</button>",
+		"$2",
+		],
+		"description": "Custom javascript event"
+	}
 }
